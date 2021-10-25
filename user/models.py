@@ -10,11 +10,11 @@ class User(AbstractUser):
                                 error_messages={
                                     'unique': _("A user with that username already exists.")},
                                 )
-    email = models.EmailField(unique=True)
+    email = models.EmailField(unique=True, blank=True)
     photo = models.ImageField(upload_to='user/')
 
     USERNAME_FIELD = 'username'
-    REQUIRED_FIELDS = ['first_name', 'last_name']
+    REQUIRED_FIELDS = ['first_name', 'last_name', 'email']
 
     def get_full_name(self):
         return super(User, self).get_full_name()
