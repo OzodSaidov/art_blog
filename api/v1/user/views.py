@@ -4,7 +4,7 @@ from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from api.v1.post.serializers import PostSerializer
+from api.v1.post.serializers import PostDetailSerializer
 from api.v1.user.serializers import UserCreateSerializer, UserDetailUpdateSerializer, \
     UserBlockListSerializer, UserFollowSerializer, UserInfoSerializer
 from post.models import Post
@@ -76,7 +76,7 @@ class UserInfoView(generics.RetrieveAPIView):
 
 
 class FeedListView(generics.ListAPIView):
-    serializer_class = PostSerializer
+    serializer_class = PostDetailSerializer
 
     def get_queryset(self):
         user = self.request.user

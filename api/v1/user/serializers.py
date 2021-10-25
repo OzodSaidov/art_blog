@@ -2,10 +2,9 @@ from rest_framework import serializers
 from django.contrib.auth import get_user_model
 from rest_framework.exceptions import ValidationError
 
-from user.models import BlockList, Following, User
+from user.models import BlockList, Following
 
-
-# User = get_user_model()
+User = get_user_model()
 
 
 class UserCreateSerializer(serializers.ModelSerializer):
@@ -84,6 +83,7 @@ class UserBlockListSerializer(serializers.ModelSerializer):
         if following.exists():
             following.delete()
         return super(UserBlockListSerializer, self).create(validated_data)
+
 
 class UserFollowSerializer(serializers.ModelSerializer):
     user = serializers.PrimaryKeyRelatedField(required=False, queryset=User.objects.all())

@@ -4,7 +4,7 @@ from . import views
 urlpatterns = [
     # User
     path('create/', views.UserCreateView.as_view()),
-    path('<int:pk>/', views.UserDetailUpdateView.as_view()),
+    path('update/', views.UserDetailUpdateView.as_view()),
     path('info/', views.UserInfoView.as_view()),
 
     # Block List
